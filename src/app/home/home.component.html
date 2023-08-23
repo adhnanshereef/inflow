@@ -1,0 +1,13 @@
+<h3>Inflow</h3>
+<form [formGroup]="requestForm" (ngSubmit)="onSendRequest()" >
+    <select formControlName="type">
+        <option value="GET" selected>GET</option>
+        <option value="POST">POST</option>
+    </select>    
+    <input formControlName="url" type="text" placeholder="URL">
+    <p *ngIf="requestForm.value.type === 'POST'" >
+        <input formControlName="body" type="text" placeholder="Body in application/json">
+    </p>
+    <button>Send</button>
+</form>
+{{response}}
