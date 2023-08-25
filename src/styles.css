@@ -1,17 +1,61 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    outline: none;
+:root {
+  --primary-color: white;
+  --secondary-color: #001f2e;
+  --teriary-color: #00253b;
+  --hover-color: #002e49;
+  --border-color: #003952;
+  /* NGX JSON Viewer */
+  --ngx-json-string: #98c379;
+  --ngx-json-number: #d19a66;
+  --ngx-json-boolean: #56b6c2;
+  --ngx-json-date: #e06c75;
+  --ngx-json-array: #61afef;
+  --ngx-json-object: #c678dd;
+  --ngx-json-function: #61afef;
+  --ngx-json-null: #d19a66;
+  --ngx-json-null-bg: #2c323d;
+  --ngx-json-undefined: #abb2bf;
+  --ngx-json-toggler: #61afef;
+  --ngx-json-key: #56b6c2;
+  --ngx-json-separator: #abb2bf;
+  --ngx-json-value: #98c379;
+  --ngx-json-undefined-key: #e06c75;
+  --ngx-json-font-family: 'Fira Code', monospace;
+  --ngx-json-font-size: 14px;
 }
 
-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 100vh;
-    text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  outline: none;
+  transition: all 0.5s ease;
+  scrollbar-color: #003348 #003149; /* Thumb color Track color */
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #001f2e; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #003348, #003149); /* Thumb gradient */
+  border-radius: 10px;
+}
+
+
+body {
+  color: var(--primary-color);
+  background: linear-gradient(160deg, #0021355e 0%, #001f1b7c 100%),
+    url(./assets/background.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  min-height: 100vh;
+  scroll-behavior: smooth;
 }

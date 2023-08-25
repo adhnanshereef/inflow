@@ -1,3 +1,251 @@
-h3{
-    font-size: 100px;
+h1 {
+  font-size: 100px;
 }
+
+.window {
+  background: var(--secondary-color);
+  width: 90%;
+  height: 600px;
+  border-radius: 15px;
+  box-shadow: 68px 20px 110px -3px rgba(6, 185, 230, 0.452);
+}
+
+.top {
+  background: var(--teriary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.parent {
+  padding-top: 10px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-icon {
+  width: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.dot:nth-child(1) {
+  background-color: red;
+}
+
+.dot:nth-child(2) {
+  background-color: yellow;
+}
+
+.dot:nth-child(3) {
+  background-color: green;
+}
+
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+
+.tabs {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.tab {
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--secondary-color);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: 1px solid var(--teriary-color);
+}
+
+.tab-type {
+  font-size: 15px;
+  font-weight: bold;
+  margin-right: 14px;
+}
+
+.tab-type-GET {
+  color: green;
+}
+
+.tab-type-POST {
+  color: rgb(255, 166, 0);
+}
+
+.tab-title {
+  font-size: 13px;
+  color: white;
+  font-weight: lighter;
+  margin-right: 15px;
+}
+
+.main {
+  padding: 15px 20px;
+  height: 91.5%;
+  width: 100%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-top {
+  height: 60%;
+  overflow: auto;
+}
+
+.form-bottom {
+  height: 40%;
+  padding: 5px;
+  padding-top: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+
+::ng-deep .ngx-json-viewer {
+  overflow: auto !important;
+}
+
+.url-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.url {
+  width: 85%;
+}
+
+.url input {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 90%;
+  padding: 15px 20px;
+  background: var(--teriary-color);
+  border: 1px solid var(--border-color);
+  border-left: none;
+  color: var(--primary-color);
+}
+
+.url input::placeholder {
+  color: var(--border-color);
+}
+
+.url select {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding: 14px 20px;
+  background: var(--teriary-color);
+  border: none;
+  width: 10%;
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+}
+
+.send-button {
+  background: var(--teriary-color);
+  border: 1px solid var(--border-color);
+  padding: 14px 20px;
+  border-radius: 10px;
+  color: var(--primary-color);
+  width: 13%;
+}
+
+.send-button:hover {
+  background: var(--hover-color);
+  cursor: pointer;
+}
+
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.top-nav button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 15px;
+  margin-right: 70px;
+  padding: 5px 0px;
+  border-bottom: 2px solid transparent;
+  /* border-radius: 5px; */
+  cursor: pointer;
+}
+
+.top-nav button.active {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.top-section {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.section-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 7px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-options span {
+  font-size: 14px;
+  margin-right: 50px;
+}
+
+.top-section select{
+  background: var(--teriary-color);
+  border: 1px solid var(--border-color);
+  color: var(--primary-color);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 7px;
+}
+
+.coding-textarea {
+  width: 100%;
+  min-height: 140px;
+  background: var(--secondary-color);
+  border: none;
+  color: var(--primary-color);
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  outline: none;
+  resize: none;
+  background: var(--teriary-color);
+  margin-bottom: 5px;
+}
+
+

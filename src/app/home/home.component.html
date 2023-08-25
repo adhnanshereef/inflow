@@ -1,4 +1,100 @@
-<h3>Inflow</h3>
+<div class="parent">
+    <h1>Inflow</h1>
+    <div class="window">
+        <div class="top">
+            <div class="tabs">
+                <div class="tab">
+                    <span class="tab-type  tab-type-{{requestForm.value.type}} ">{{requestForm.value.type}}</span>
+                    <h6 class="tab-title">Unknown</h6>
+                    <span class="tab-close">&#x2715;</span>
+                </div>
+            </div>
+            <div class="menu-icon">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+
+        </div>
+
+        <form class="main" [formGroup]="requestForm" (ngSubmit)="onSendRequest()">
+            <div class="form-top">
+                <div class="url-button">
+                    <div class="url">
+                        <select formControlName="type">
+                            <option value="GET" selected>GET</option>
+                            <option value="POST">POST</option>
+                        </select>
+                        <input formControlName="url" type="text" placeholder="URL">
+                    </div>
+                    <button class="send-button">Send</button>
+
+                </div>
+
+                <nav class="top-nav">
+                    <button type="button" [ngClass]="{ active: index === 'bORp' }"
+                        *ngIf="requestForm.value.type === 'POST'" (click)="setIndex('bORp')">
+                        Body
+                    </button>
+                    <button type="button" [ngClass]="{ active: index === 'bORp' }"
+                        *ngIf="requestForm.value.type === 'GET'" (click)="setIndex('bORp')">
+                        Parameters
+                    </button>
+                    <button type="button" [ngClass]="{ active: index === 'headers' }" (click)="setIndex('headers')">
+                        Headers
+                    </button>
+                    <button type="button" [ngClass]="{ active: index === 'authentication' }"
+                        (click)="setIndex('authentication')">
+                        Authentication
+                    </button>
+                </nav>
+
+                <div *ngIf="index === 'bORp'">
+                    <div class="top-section" *ngIf="requestForm.value.type === 'POST'">
+                        <div class="section-options" >
+                            <span>Content Type</span>
+                            <select>
+                                <option value="none">None</option>
+                                <option value="application/json">application/json</option>
+                                <option value="application/ld+json">application/ld+json</option>
+                                <option value="application/hal+json">application/hal+json</option>
+                                <option value="application/vnd.api+json">application/vnd.api+json</option>
+                                <option value="application/xml">application/xml</option>
+                                <option value="text/html">text/html</option>
+                                <option value="text/plain">text/plain</option>
+                            </select>
+                        </div>
+                        <small class="section-title" >
+                            Raw Request Body
+                        </small>
+
+                        <textarea formControlName="body" class="coding-textarea" (input)="adjustTextareaHeight($event)"></textarea>
+
+                    </div>
+                    <div class="top-section" *ngIf="requestForm.value.type === 'GET'">
+                        Parameters
+                    </div>
+                </div>
+                <div class="top-section" *ngIf="index === 'headers'">
+                    Headers
+                </div>
+                <div class="top-section" *ngIf="index === 'authentication'">
+                    Authentication
+                </div>
+
+            </div>
+            <div class="form-bottom response-container">
+                <ngx-json-viewer [expanded]="true" [json]="response"></ngx-json-viewer>
+            </div>
+            
+
+        </form>
+
+    </div>
+</div>
+
+
+<!-- <h3>Inflow</h3>
 <form [formGroup]="requestForm" (ngSubmit)="onSendRequest()" >
     <select formControlName="type">
         <option value="GET" selected>GET</option>
@@ -10,4 +106,4 @@
     </p>
     <button>Send</button>
 </form>
-{{response}}
+{{response}} -->
