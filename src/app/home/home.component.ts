@@ -205,8 +205,8 @@ export class HomeComponent implements OnInit {
   // Helper function to prepare headers from the form
   prepareHeaders(): HttpHeaders {
     const headerControls = this.headers.controls;
+    const tempHeaders: { [key: string]: string } = {}; // Initialize an empty object to store header key-value pairs
 
-    const headers = new HttpHeaders();
     headerControls.forEach((control) => {
       const keyControl = control.get('key');
       const valueControl = control.get('value');
@@ -215,13 +215,18 @@ export class HomeComponent implements OnInit {
         const key = keyControl.value.trim();
         const value = valueControl.value.trim();
         if (key !== '') {
-          // Check if the key is not empty
-          headers.append(key, value);
+          console.log(key, value);
+          tempHeaders[key] = value; // Dynamically add key-value pair to the object
         }
       }
     });
 
+    console.log(tempHeaders);
+    const headers = new HttpHeaders(tempHeaders); // Convert the object into HttpHeaders
+
+    console.log(headers);
     return headers;
   }
   // End of prepareHeaders()
+
 }

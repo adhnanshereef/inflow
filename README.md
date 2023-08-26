@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` ( `ng serve --host=0.0.0.0 --public-host=solid-happiness-9vw97j6xvg3956r-4200.app.github.dev` in codespaces ) for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` ( `ng serve --host=0.0.0.0` in codespaces ) for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
