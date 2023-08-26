@@ -51,32 +51,98 @@
 
                 <div *ngIf="index === 'bORp'">
                     <div class="top-section" *ngIf="requestForm.value.type === 'POST'">
-                        <div class="section-options" >
-                            <span>Content Type</span>
-                            <select>
-                                <option value="none">None</option>
-                                <option value="application/json">application/json</option>
-                                <option value="application/ld+json">application/ld+json</option>
-                                <option value="application/hal+json">application/hal+json</option>
-                                <option value="application/vnd.api+json">application/vnd.api+json</option>
-                                <option value="application/xml">application/xml</option>
-                                <option value="text/html">text/html</option>
-                                <option value="text/plain">text/plain</option>
-                            </select>
+                        <div class="section-options">
+                            <div>
+                                <span>Content Type</span>
+                                <select>
+                                    <option value="none">None</option>
+                                    <option value="application/json">application/json</option>
+                                    <option value="application/ld+json">application/ld+json</option>
+                                    <option value="application/hal+json">application/hal+json</option>
+                                    <option value="application/vnd.api+json">application/vnd.api+json</option>
+                                    <option value="application/xml">application/xml</option>
+                                    <option value="text/html">text/html</option>
+                                    <option value="text/plain">text/plain</option>
+                                </select>
+                            </div>
                         </div>
-                        <small class="section-title" >
-                            Raw Request Body
-                        </small>
+                        <div class="section-title-c">
+                            <small class="section-title">
+                                Raw Request Body
+                            </small>
+                        </div>
 
-                        <textarea formControlName="body" class="coding-textarea" (input)="adjustTextareaHeight($event)"></textarea>
+                        <textarea formControlName="body" class="coding-textarea"
+                            (input)="adjustTextareaHeight($event)"></textarea>
 
                     </div>
                     <div class="top-section" *ngIf="requestForm.value.type === 'GET'">
-                        Parameters
+                        <div class="section-options">
+                            <small class="section-title">
+                                Query Parameters
+                            </small>
+                            <div>
+                                <button type="button" (click)="addParameter()"><i class="fa-solid fa-plus"></i></button>
+                                <button type="button" (click)="deleteAllParameters()"><i
+                                        class="fa-solid fa-trash"></i></button>
+                                <button type="button" (click)="checkForm()"><i class="fa-solid fa-check"></i></button>
+                            </div>
+                        </div>
+
+
+                        <div formArrayName="parameters" *ngIf="parameters.controls.length > 0">
+                            <div class="section-inputs">
+                                <div class="section-input" *ngFor="let parameter of parameters.controls; let i = index"
+                                    [formGroupName]="i">
+                                    <input type="text" [placeholder]="'Key ' +(i+1)" formControlName="key">
+                                    <input type="text" [placeholder]="'Value ' +(i+1)" formControlName="value">
+                                    <button type="button" (click)="removeParameter(i)"><i
+                                            class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-none" *ngIf="parameters.controls.length === 0">
+                            <i class="fa-solid fa-database section-none-i"></i>
+                            <p>This request doesn't have any parameters</p>
+                            <button type="button" (click)="addParameter()"><i class="fa-solid fa-plus"></i> Add new
+                            </button>
+                        </div>
+
                     </div>
                 </div>
                 <div class="top-section" *ngIf="index === 'headers'">
-                    Headers
+                    <div class="section-options">
+                        <small class="section-title">
+                            Header List
+                        </small>
+                        <div>
+                            <button type="button" (click)="addHeader()"><i class="fa-solid fa-plus"></i></button>
+                            <button type="button" (click)="deleteAllHeaders()"><i
+                                    class="fa-solid fa-trash"></i></button>
+                            <button type="button" (click)="checkForm()"><i class="fa-solid fa-check"></i></button>
+                        </div>
+                    </div>
+
+
+                    <div formArrayName="headers" *ngIf="headers.controls.length > 0">
+                        <div class="section-inputs">
+                            <div class="section-input" *ngFor="let header of headers.controls; let i = index"
+                                [formGroupName]="i">
+                                <input type="text" [placeholder]="'Header ' +(i+1)" formControlName="key">
+                                <input type="text" [placeholder]="'Value ' +(i+1)" formControlName="value">
+                                <button type="button" (click)="removeHeader(i)"><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section-none" *ngIf="headers.controls.length === 0">
+                        <i class="fa-solid fa-puzzle-piece section-none-i"></i>
+                        <p>This request doesn't have any headers</p>
+                        <button type="button" (click)="addHeader()"><i class="fa-solid fa-plus"></i> Add new
+                        </button>
+                    </div>
                 </div>
                 <div class="top-section" *ngIf="index === 'authentication'">
                     Authentication
@@ -86,13 +152,20 @@
             <div class="form-bottom response-container">
                 <ngx-json-viewer [expanded]="true" [json]="response"></ngx-json-viewer>
             </div>
-            
+
 
         </form>
 
     </div>
 </div>
 
+
+<!-- <div class="section-inputs">
+                            <div class="section-input">
+                                <input type="text" placeholder="Key">
+                                <input type="text" placeholder="Value">
+                            </div>
+                        </div> -->
 
 <!-- <h3>Inflow</h3>
 <form [formGroup]="requestForm" (ngSubmit)="onSendRequest()" >
