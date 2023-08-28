@@ -1,14 +1,25 @@
 <div class="parent">
+
+    <!-- Heading -->
     <h1>Inflow</h1>
+
+    <!-- Window --start -->
     <div class="window">
+        <!-- Top Bar --start -->
         <div class="top">
+            <!-- Tabs -->
             <div class="tabs">
+                <!-- Tab -->
                 <div class="tab">
+                    <!-- Type of Request -->
                     <span class="tab-type  tab-type-{{requestForm.value.type}} ">{{requestForm.value.type}}</span>
-                    <h6 class="tab-title">Unknown</h6>
+                    <!-- TItle of Tab -->
+                    <h6 class="tab-title">Inflow</h6>
+                    <!-- Clost button -->
                     <span class="tab-close">&#x2715;</span>
                 </div>
             </div>
+            <!-- Close, Minimize, Resize Butttons -->
             <div class="menu-icon">
                 <div class="dot"></div>
                 <div class="dot"></div>
@@ -16,10 +27,15 @@
             </div>
 
         </div>
+        <!-- Top Bar --end -->
 
+        <!-- Main area --start -->
         <form class="main" [formGroup]="requestForm" (ngSubmit)="onSendRequest()">
+            <!-- The top Portion that contains controls of request --start -->
             <div class="form-top">
-                <div class="url-button">
+
+                <!-- Area to give URL and select method of request -->
+                <div class="url-container">
                     <div class="url">
                         <select formControlName="type">
                             <option value="GET" selected>GET</option>
@@ -31,6 +47,7 @@
 
                 </div>
 
+                <!-- Navigater between tab Parameters, Body, Header ...... -->
                 <nav class="top-nav">
                     <button type="button" [ngClass]="{ active: index === 'bORp' }"
                         *ngIf="requestForm.value.type === 'POST'" (click)="setIndex('bORp')">
@@ -49,7 +66,11 @@
                     </button>
                 </nav>
 
+                <!-- Area to control body, parameters, header ...  --start -->
+
+                <!-- Body, Parameters --start -->
                 <div *ngIf="index === 'bORp'">
+                    <!-- Body  --start -->
                     <div class="top-section" *ngIf="requestForm.value.type === 'POST'">
                         <div class="section-options">
                             <div>
@@ -76,6 +97,8 @@
                             (input)="adjustTextareaHeight($event)"></textarea>
 
                     </div>
+                    <!-- Body  --end -->
+                    <!-- Parameters --start -->
                     <div class="top-section" *ngIf="requestForm.value.type === 'GET'">
                         <div class="section-options">
                             <small class="section-title">
@@ -110,7 +133,11 @@
                         </div>
 
                     </div>
+                    <!-- Parameters --end -->
                 </div>
+                <!-- Body, Parameters --start -->
+
+                <!-- Headers --start -->
                 <div class="top-section" *ngIf="index === 'headers'">
                     <div class="section-options">
                         <small class="section-title">
@@ -144,19 +171,34 @@
                         </button>
                     </div>
                 </div>
+
+                <!-- Headers --end -->
+
+                <!-- Authentication --start -->
                 <div class="top-section" *ngIf="index === 'authentication'">
                     Authentication
                 </div>
+                <!-- Authentication --end -->
+
+
+                <!-- Area to control body, parameters, header ...  --end -->
 
             </div>
+
+            <!-- Top Portion --end -->
+
+            <!-- Bottom Portion contains Reponose -->
             <div class="form-bottom response-container">
                 <ngx-json-viewer [expanded]="true" [json]="response"></ngx-json-viewer>
             </div>
 
 
         </form>
+        <!-- Main area --end -->
+
 
     </div>
+    <!-- Window --end -->
 </div>
 
 

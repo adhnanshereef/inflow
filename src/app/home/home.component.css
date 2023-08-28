@@ -1,25 +1,4 @@
-h1 {
-  font-size: 100px;
-}
-
-.window {
-  background: var(--secondary-color);
-  width: 90%;
-  height: 600px;
-  border-radius: 15px;
-  box-shadow: 68px 20px 110px -3px rgba(6, 185, 230, 0.452);
-}
-
-.top {
-  background: var(--teriary-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
-
+/* Parent div of home */
 .parent {
   padding-top: 10px;
   padding-bottom: 50px;
@@ -29,6 +8,31 @@ h1 {
   align-items: center;
 }
 
+/* Title Inflow Design */
+h1 {
+  font-size: 100px;
+}
+
+/* Window */
+.window {
+  background: var(--secondary-color);
+  width: 90%;
+  height: 600px;
+  border-radius: 15px;
+  box-shadow: 68px 20px 110px -3px rgba(6, 185, 230, 0.452);
+}
+
+/* Top Bar of Window  --start */
+.top {
+  background: var(--teriary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* Three on the right side of top bar -- start */
 .menu-icon {
   width: 50px;
   display: flex;
@@ -36,6 +40,12 @@ h1 {
   justify-content: space-between;
   cursor: pointer;
   margin-right: 20px;
+}
+
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
 }
 
 .dot:nth-child(1) {
@@ -50,12 +60,9 @@ h1 {
   background-color: green;
 }
 
-.dot {
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-}
+/* Three on the right side of top bar -- start */
 
+/* Tabs Design in Top Bar of the window --start */
 .tabs {
   padding: 0;
   display: flex;
@@ -96,6 +103,11 @@ h1 {
   margin-right: 15px;
 }
 
+/* Tabs Design in Top Bar of the window --end */
+
+/* Top Bar of Window --end */
+
+/* Main Portion of Window --start */
 .main {
   padding: 15px 20px;
   height: 91.5%;
@@ -108,24 +120,14 @@ h1 {
   justify-content: space-between;
 }
 
+/* Top Part Of Main area contains request url, type, body, parameters, header...... --start */
 .form-top {
   height: 60%;
   overflow: auto;
 }
 
-.form-bottom {
-  height: 40%;
-  padding: 5px;
-  padding-top: 10px;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-}
-
-::ng-deep .ngx-json-viewer {
-  overflow: auto !important;
-}
-
-.url-button {
+/* The Area that contains URL Input, Request type, Send Button --start */
+.url-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -133,10 +135,12 @@ h1 {
   margin-bottom: 10px;
 }
 
+/* URL Input, Request Method */
 .url {
   width: 85%;
 }
 
+/* URL INPUT */
 .url input {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -152,6 +156,7 @@ h1 {
   color: var(--border-color);
 }
 
+/* Request Method */
 .url select {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -163,6 +168,7 @@ h1 {
   border: 1px solid var(--border-color);
 }
 
+/* Request Send Button */
 .send-button {
   background: var(--teriary-color);
   border: 1px solid var(--border-color);
@@ -177,6 +183,9 @@ h1 {
   cursor: pointer;
 }
 
+/* The Area that contains URL Input, Request type, Send Button  --end */
+
+/* NavBar To Navigate among Headers, Parameters, Body .... --start */
 .top-nav {
   display: flex;
   flex-direction: row;
@@ -192,20 +201,23 @@ h1 {
   margin-right: 70px;
   padding: 5px 0px;
   border-bottom: 2px solid transparent;
-  /* border-radius: 5px; */
   cursor: pointer;
 }
 
+/* While in each button's page  */
 .top-nav button.active {
   border-bottom: 2px solid var(--primary-color);
 }
 
+/* NavBar To Navigate among Headers, Parameters, Body ....  --end */
+
+/* Section For Body, Parameters, Headers ..... --start */
 .top-section {
   display: flex;
   flex-direction: column;
 }
 
-
+/* Options in each Section. Eg:- Add Parameters, Add Headers ..... */
 .section-options {
   display: flex;
   flex-direction: row;
@@ -215,11 +227,13 @@ h1 {
   border-bottom: 1px solid var(--border-color);
 }
 
+/* Text In Options Section */
 .section-options span {
   font-size: 14px;
   margin-right: 50px;
 }
 
+/* Section Options Buttons */
 .section-options button {
   background: var(--teriary-color);
   border: 1px solid var(--border-color);
@@ -234,7 +248,8 @@ h1 {
   cursor: pointer;
 }
 
-.section-options select{
+/* Select in Section Option */
+.section-options select {
   background: var(--teriary-color);
   border: 1px solid var(--border-color);
   color: var(--primary-color);
@@ -242,16 +257,18 @@ h1 {
   padding: 5px;
 }
 
-.section-title-c{
+/* Container For Each Sections Title */
+.section-title-c {
   padding: 7px;
 }
 
+/* Title for Each Section */
 .section-title {
   font-size: 15px;
   font-weight: bold;
-  
 }
 
+/* A textarea for body */
 .coding-textarea {
   width: 100%;
   min-height: 140px;
@@ -267,23 +284,24 @@ h1 {
   margin-bottom: 5px;
 }
 
-
-.section-inputs{
+/* Inputs in Section, Such as Input to add Parameters, Header .... */
+.section-inputs {
   width: 100%;
   display: flex;
   flex-direction: column;
   padding: 7px;
 }
 
-
-.section-input{
+/* One Raw Contain two Input */
+.section-input {
   width: 100%;
   display: flex;
   flex-direction: row;
   padding-top: 10px;
 }
 
-.section-input input{
+/* Each Input */
+.section-input input {
   width: 50%;
   padding: 10px 12.5px;
   background: none;
@@ -291,26 +309,27 @@ h1 {
   color: var(--primary-color);
 }
 
-.section-input input::placeholder{
+.section-input input::placeholder {
   color: var(--border-color);
 }
 
-.section-input input:focus{
+.section-input input:focus {
   background: var(--teriary-color);
 }
 
-.section-input input:nth-child(1){
+.section-input input:nth-child(1) {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 
-.section-input input:nth-child(2){
+.section-input input:nth-child(2) {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   border-left: none;
 }
 
-.section-input button{
+/* Delete Button For Inputs */
+.section-input button {
   background: var(--teriary-color);
   border: 1px solid var(--border-color);
   padding: 10px 12.5px;
@@ -319,13 +338,13 @@ h1 {
   margin-left: 10px;
 }
 
-.section-input button:hover{
+.section-input button:hover {
   background: var(--hover-color);
   cursor: pointer;
 }
 
-
-.section-none{
+/* If there is no parameters or header .......  */
+.section-none {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -334,8 +353,8 @@ h1 {
   color: var(--text);
 }
 
-
-.section-none button{
+/* To add one */
+.section-none button {
   background: var(--teriary-color);
   border: 1px solid var(--border-color);
   padding: 10px 12.5px;
@@ -344,13 +363,34 @@ h1 {
   margin-top: 10px;
 }
 
-
-.section-none button:hover{
+.section-none button:hover {
   background: var(--hover-color);
   cursor: pointer;
 }
 
-.section-none-i{
-  font-size: 50px; 
+/* Icon if there is nothing */
+.section-none-i {
+  font-size: 50px;
   margin: 10px 0;
 }
+
+/* Section For Body, Parameters, Headers ..... --end */
+
+/* Top Part Of Main area --end */
+
+/* Bottom Part Main area contains Reponse container */
+
+.form-bottom {
+  height: 40%;
+  padding: 5px;
+  padding-top: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+
+/* NGX_JSON_Viewer overflow auto */
+::ng-deep .ngx-json-viewer {
+  overflow: auto !important;
+}
+
+/* Main Portion of Window --end */
