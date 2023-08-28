@@ -1,4 +1,3 @@
-
 /* Variables */
 :root {
   --primary-color: white;
@@ -23,10 +22,9 @@
   --ngx-json-separator: #abb2bf;
   --ngx-json-value: #98c379;
   --ngx-json-undefined-key: #e06c75;
-  --ngx-json-font-family: 'Fira Code', monospace;
+  --ngx-json-font-family: "Fira Code", monospace;
   --ngx-json-font-size: 14px;
 }
-
 
 /* Default Design for Everything */
 * {
@@ -39,7 +37,6 @@
   scrollbar-color: #003348 #003149; /* Thumb color Track color */
   scrollbar-width: thin;
 }
-
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -54,7 +51,6 @@
   background: linear-gradient(to bottom, #003348, #003149); /* Thumb gradient */
   border-radius: 10px;
 }
-
 
 /* Body */
 body {

@@ -60,9 +60,9 @@
                     <button type="button" [ngClass]="{ active: index === 'headers' }" (click)="setIndex('headers')">
                         Headers
                     </button>
-                    <button type="button" [ngClass]="{ active: index === 'authentication' }"
-                        (click)="setIndex('authentication')">
-                        Authentication
+                    <button type="button" [ngClass]="{ active: index === 'authorization' }"
+                        (click)="setIndex('authorization')">
+                        Authorization
                     </button>
                 </nav>
 
@@ -75,7 +75,7 @@
                         <div class="section-options">
                             <div>
                                 <span>Content Type</span>
-                                <select>
+                                <select formControlName="content_type">
                                     <option value="none">None</option>
                                     <option value="application/json">application/json</option>
                                     <option value="application/ld+json">application/ld+json</option>
@@ -93,8 +93,16 @@
                             </small>
                         </div>
 
-                        <textarea formControlName="body" class="coding-textarea"
-                            (input)="adjustTextareaHeight($event)"></textarea>
+                        <div *ngIf="requestForm.value.content_type !== 'none'">
+                            <textarea formControlName="body" class="coding-textarea"
+                                (input)="adjustTextareaHeight($event)"></textarea>
+
+                        </div>
+
+                        <div class="section-none" *ngIf="requestForm.value.content_type === 'none'">
+                            <i class="fa-solid fa-code section-none-i"></i>
+                            <p>This request doesn't have a body</p>
+                        </div>
 
                     </div>
                     <!-- Body  --end -->
@@ -174,11 +182,32 @@
 
                 <!-- Headers --end -->
 
-                <!-- Authentication --start -->
-                <div class="top-section" *ngIf="index === 'authentication'">
-                    Authentication
+                <!-- Authorization --start -->
+                <div class="top-section" *ngIf="index === 'authorization'">
+                    <div class="section-options">
+                        <small class="section-title">
+                            Authorization
+                        </small>
+
+
+
+                        <input type="checkbox" [formControl]="authorizationCheckControl" >
+
+                    </div>
+
+
+                    <div *ngIf="requestForm.value.authorization.check === true">
+                        <input class="section-single-input" type="text" placeholder="Value"
+                            [formControl]="authorizationValueControl">
+                    </div>
+
+                    <div class="section-none" *ngIf="requestForm.value.authorization.check === false">
+                        <i class="fa-solid fa-lock section-none-i"></i>
+                        <p>This request doesn't use any authorization</p>
+                    </div>
+
                 </div>
-                <!-- Authentication --end -->
+                <!-- Authorization --end -->
 
 
                 <!-- Area to control body, parameters, header ...  --end -->

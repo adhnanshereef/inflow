@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // Interface for parameters
@@ -31,6 +31,11 @@ export class HomeComponent implements OnInit {
       type: 'GET',
       url: '',
       body: '{}',
+      content_type: 'application/json',
+      authorization: this.formBuilder.group({
+        check: false,
+        value: '',
+      }),
       parameters: this.formBuilder.array([]), // Initialize parameters array
       headers: this.formBuilder.array([]), // Initialize headers array
     });
@@ -39,6 +44,16 @@ export class HomeComponent implements OnInit {
     this.addParameter();
     // Adding a default header
     this.addHeader();
+  }
+
+  // Getter for authorization value control
+  get authorizationValueControl(): FormControl {
+    return this.requestForm.get('authorization.value') as FormControl;
+  }
+
+  // Getter for authorization type control
+  get authorizationCheckControl(): FormControl {
+    return this.requestForm.get('authorization.check') as FormControl;
   }
 
   // Getter for parameters
@@ -133,7 +148,7 @@ export class HomeComponent implements OnInit {
     this.response = 'Loading...';
 
     // Getting the form values
-    let { type, url, body, parameters } = this.requestForm.value;
+    let { type, url, body, parameters, content_type } = this.requestForm.value;
 
     // Preparing the headers
     const headers = this.prepareHeaders();
@@ -178,21 +193,25 @@ export class HomeComponent implements OnInit {
       // Completed the GET request
     } else if (type === 'POST') {
       // Checking whether the body is valid JSON
-      try {
-        body = JSON.parse(body);
-      } catch (error) {
-        this.response = 'Invalid JSON body!';
-        return;
+      if (content_type != 'none') {
+        try {
+          body = JSON.parse(body);
+        } catch (error) {
+          this.response = 'Invalid JSON body!';
+          return;
+        }
       }
       // Sending the POST request
-      this.http.post(url, body, { headers }).subscribe(
-        (res) => {
-          this.response = res;
-        },
-        (error) => {
-          this.response = error;
-        }
-      );
+      this.http
+        .post(url, content_type != 'none' ? body : null, { headers })
+        .subscribe(
+          (res) => {
+            this.response = res;
+          },
+          (error) => {
+            this.response = error;
+          }
+        );
       // Completed the POST request
     } else {
       // Invalid request type
@@ -207,26 +226,38 @@ export class HomeComponent implements OnInit {
     const headerControls = this.headers.controls;
     const tempHeaders: { [key: string]: string } = {}; // Initialize an empty object to store header key-value pairs
 
+    // Iterate through the headers array and add key-value pairs to the object
     headerControls.forEach((control) => {
       const keyControl = control.get('key');
       const valueControl = control.get('value');
-
       if (keyControl && valueControl) {
         const key = keyControl.value.trim();
         const value = valueControl.value.trim();
         if (key !== '') {
-          console.log(key, value);
           tempHeaders[key] = value; // Dynamically add key-value pair to the object
         }
       }
     });
 
+    // Checking for content type and adding it to the headers if it is not none
+    if (this.requestForm.value.content_type !== 'none') {
+      tempHeaders['Content-Type'] = this.requestForm.value.content_type;
+    }
+
+    // Checking for authorization and adding it to the headers if it is not empty
+    if (
+      this.authorizationCheckControl.value &&
+      this.authorizationValueControl.value !== ''
+    ) {
+      tempHeaders['Authorization'] = this.authorizationValueControl.value;
+    }
+
     console.log(tempHeaders);
+
+    // Convert the object into HttpHeaders
     const headers = new HttpHeaders(tempHeaders); // Convert the object into HttpHeaders
 
-    console.log(headers);
     return headers;
   }
   // End of prepareHeaders()
-
 }
