@@ -104,30 +104,6 @@ export class HomeComponent implements OnInit {
     this.headers.clear();
   }
 
-  checkForm() {
-    const formData = this.requestForm.value;
-    console.log('Form Data:', formData);
-
-    // You can access the parameters like this:
-    const parameters = formData.parameters;
-    console.log('Parameters:', parameters);
-
-    const headers = formData.headers;
-    console.log('Headers:', headers);
-
-    // Iterate through parameters and access key and value:
-    for (const param of parameters) {
-      console.log('Parameter:', param.key, 'Value:', param.value);
-    }
-
-    // Iterate through headers and access key and value:
-    for (const header of headers) {
-      console.log('Header:', header.key, 'Value:', header.value);
-    }
-
-    // Now you can use the formData to make your request or perform other actions
-  }
-
   // To navigate among the tabs
   setIndex(index: string) {
     this.index = index;
@@ -213,6 +189,50 @@ export class HomeComponent implements OnInit {
           }
         );
       // Completed the POST request
+    } else if (type === 'PUT') {
+      // Checking whether the body is valid JSON
+      if (content_type != 'none') {
+        try {
+          body = JSON.parse(body);
+        } catch (error) {
+          this.response = 'Invalid JSON body!';
+          return;
+        }
+      }
+      // Sending the PUT request
+      this.http
+        .put(url, content_type != 'none' ? body : null, { headers })
+        .subscribe(
+          (res) => {
+            this.response = res;
+          },
+          (error) => {
+            this.response = error;
+          }
+        );
+      // Completed the PUT request
+    } else if (type === 'DELETE') {
+      // Checking for empty parameters
+      const validParameters = parameters.filter(
+        (param: Parameter) => param.key.trim() !== ''
+      );
+      // Constructing the full URL with parameters
+      const fullUrl =
+        validParameters.length > 0
+          ? `${url}?${validParameters
+              .map((param: Parameter) => `${param.key}=${param.value}`)
+              .join('&')}`
+          : url;
+      // Sending the DELETE request
+      this.http.delete(fullUrl, { headers }).subscribe(
+        (res) => {
+          this.response = res;
+        },
+        (error) => {
+          this.response = error;
+        }
+      );
+      // Completed the DELETE request
     } else {
       // Invalid request type
       this.response = 'Invalid request type!';

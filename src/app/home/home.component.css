@@ -96,6 +96,14 @@ h1 {
   color: rgb(255, 166, 0);
 }
 
+.tab-type-PUT {
+  color: rgb(0, 195, 255);
+}
+
+.tab-type-DELETE {
+  color: rgb(255, 17, 0);
+}
+
 .tab-title {
   font-size: 13px;
   color: white;
@@ -124,6 +132,7 @@ h1 {
 .form-top {
   height: 60%;
   overflow: auto;
+  overflow-x: hidden;
 }
 
 /* The Area that contains URL Input, Request type, Send Button --start */
@@ -255,15 +264,6 @@ h1 {
   color: var(--primary-color);
   border-radius: 5px;
   padding: 5px;
-}
-
-/* Checkbox in Section Options */
-.section-options input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  margin: 5px;
-  margin-right: 15px;
-  cursor: pointer;
 }
 
 /* Container For Each Sections Title */

@@ -40,6 +40,8 @@
                         <select formControlName="type">
                             <option value="GET" selected>GET</option>
                             <option value="POST">POST</option>
+                            <option value="PUT">PUT</option>
+                            <option value="DELETE">DELETE</option>
                         </select>
                         <input formControlName="url" type="text" placeholder="URL">
                     </div>
@@ -50,11 +52,13 @@
                 <!-- Navigater between tab Parameters, Body, Header ...... -->
                 <nav class="top-nav">
                     <button type="button" [ngClass]="{ active: index === 'bORp' }"
-                        *ngIf="requestForm.value.type === 'POST'" (click)="setIndex('bORp')">
+                        *ngIf="requestForm.value.type === 'POST' || requestForm.value.type === 'PUT'"
+                        (click)="setIndex('bORp')">
                         Body
                     </button>
                     <button type="button" [ngClass]="{ active: index === 'bORp' }"
-                        *ngIf="requestForm.value.type === 'GET'" (click)="setIndex('bORp')">
+                        *ngIf="requestForm.value.type === 'GET'|| requestForm.value.type === 'DELETE'"
+                        (click)="setIndex('bORp')">
                         Parameters
                     </button>
                     <button type="button" [ngClass]="{ active: index === 'headers' }" (click)="setIndex('headers')">
@@ -71,7 +75,9 @@
                 <!-- Body, Parameters --start -->
                 <div *ngIf="index === 'bORp'">
                     <!-- Body  --start -->
-                    <div class="top-section" *ngIf="requestForm.value.type === 'POST'">
+                    <!-- Body will in POST, PUT Request Methods -->
+                    <div class="top-section"
+                        *ngIf="requestForm.value.type === 'POST' || requestForm.value.type === 'PUT'">
                         <div class="section-options">
                             <div>
                                 <span>Content Type</span>
@@ -107,7 +113,9 @@
                     </div>
                     <!-- Body  --end -->
                     <!-- Parameters --start -->
-                    <div class="top-section" *ngIf="requestForm.value.type === 'GET'">
+                    <!-- Parameters will be in GET, DELETE Request Methods -->
+                    <div class="top-section"
+                        *ngIf="requestForm.value.type === 'GET'|| requestForm.value.type === 'DELETE'">
                         <div class="section-options">
                             <small class="section-title">
                                 Query Parameters
@@ -116,7 +124,6 @@
                                 <button type="button" (click)="addParameter()"><i class="fa-solid fa-plus"></i></button>
                                 <button type="button" (click)="deleteAllParameters()"><i
                                         class="fa-solid fa-trash"></i></button>
-                                <button type="button" (click)="checkForm()"><i class="fa-solid fa-check"></i></button>
                             </div>
                         </div>
 
@@ -155,7 +162,6 @@
                             <button type="button" (click)="addHeader()"><i class="fa-solid fa-plus"></i></button>
                             <button type="button" (click)="deleteAllHeaders()"><i
                                     class="fa-solid fa-trash"></i></button>
-                            <button type="button" (click)="checkForm()"><i class="fa-solid fa-check"></i></button>
                         </div>
                     </div>
 
@@ -189,9 +195,12 @@
                             Authorization
                         </small>
 
-
-
-                        <input type="checkbox" [formControl]="authorizationCheckControl" >
+                        <div>
+                            <label class="switch">
+                                <input [formControl]="authorizationCheckControl" type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
 
                     </div>
 
@@ -229,25 +238,3 @@
     </div>
     <!-- Window --end -->
 </div>
-
-
-<!-- <div class="section-inputs">
-                            <div class="section-input">
-                                <input type="text" placeholder="Key">
-                                <input type="text" placeholder="Value">
-                            </div>
-                        </div> -->
-
-<!-- <h3>Inflow</h3>
-<form [formGroup]="requestForm" (ngSubmit)="onSendRequest()" >
-    <select formControlName="type">
-        <option value="GET" selected>GET</option>
-        <option value="POST">POST</option>
-    </select>    
-    <input formControlName="url" type="text" placeholder="URL">
-    <p *ngIf="requestForm.value.type === 'POST'" >
-        <input formControlName="body" type="text" placeholder="Body in application/json">
-    </p>
-    <button>Send</button>
-</form>
-{{response}} -->
