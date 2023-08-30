@@ -1,0 +1,124 @@
+/* Top Part Of Main area contains request url, type, body, parameters, header...... --start */
+.form-top {
+  height: 60%;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+/* The Area that contains URL Input, Request type, Send Button --start */
+.url-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* URL Input, Request Method */
+.url {
+  width: 85%;
+}
+
+/* URL INPUT */
+.url input {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 90%;
+  padding: 15px 20px;
+  background: var(--teriary-color);
+  border: 1px solid var(--border-color);
+  border-left: none;
+  color: var(--primary-color);
+}
+
+.url input::placeholder {
+  color: var(--border-color);
+}
+
+/* Request Method */
+.url select {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding: 14px 20px;
+  background: var(--teriary-color);
+  border: none;
+  width: 10%;
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+}
+
+/* Request Send Button */
+.send-button {
+  background: var(--teriary-color);
+  border: 1px solid var(--border-color);
+  padding: 14px 20px;
+  border-radius: 10px;
+  color: var(--primary-color);
+  width: 13%;
+}
+
+.send-button:hover {
+  background: var(--hover-color);
+  cursor: pointer;
+}
+
+/* The Area that contains URL Input, Request type, Send Button  --end */
+
+/* NavBar To Navigate among Headers, Parameters, Body .... --start */
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.top-nav button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 15px;
+  margin-right: 70px;
+  padding: 5px 0px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+/* While in each button's page  */
+.top-nav button.active {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* NavBar To Navigate among Headers, Parameters, Body ....  --end */
+
+/* ---- Sections Designs in home3 stylesheet ---- */
+
+/* Top Part Of Main area --end */
+
+/* Footer  --start */
+.footer {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.footer span {
+  font-size: 17.5px;
+  font-family: "Fira Code", monospace;
+  color: #0078bd;
+}
+
+.footer span a {
+  color: #1281a3;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* Footer --end */
+
+/* Design for the parent of download window */
+app-download{
+  padding: 50px;
+  padding-bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

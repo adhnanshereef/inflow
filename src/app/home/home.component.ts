@@ -12,7 +12,12 @@ interface Parameter {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css','./home2.component.css']
+  styleUrls: [
+    './styles/home.component.css',
+    './styles/home2.component.css',
+    './styles/home3.component.css',
+    './styles/home4.component.css',
+  ],
 })
 
 // Component class
@@ -173,8 +178,7 @@ export class HomeComponent implements OnInit {
         try {
           body = JSON.parse(body);
         } catch (error) {
-          this.response = 'Invalid JSON body!';
-          return;
+          this.response = 'Sending......';
         }
       }
       // Sending the POST request
@@ -195,8 +199,7 @@ export class HomeComponent implements OnInit {
         try {
           body = JSON.parse(body);
         } catch (error) {
-          this.response = 'Invalid JSON body!';
-          return;
+          this.response = 'Sending......';
         }
       }
       // Sending the PUT request
@@ -271,8 +274,6 @@ export class HomeComponent implements OnInit {
     ) {
       tempHeaders['Authorization'] = this.authorizationValueControl.value;
     }
-
-    console.log(tempHeaders);
 
     // Convert the object into HttpHeaders
     const headers = new HttpHeaders(tempHeaders); // Convert the object into HttpHeaders

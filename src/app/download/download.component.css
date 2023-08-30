@@ -1,0 +1,140 @@
+/* Heading of the section */
+h1 {
+  margin-bottom: 20px;
+  font-weight: bolder;
+  font-size: 60px;
+}
+
+/* Window to download Inflow App */
+.download-window {
+  background: var(--secondary-color);
+  width: 75% !important;
+  height: 450px;
+  border-radius: 15px;
+  box-shadow: 68px 20px 110px -3px rgba(6, 185, 230, 0.452);
+}
+
+/* Top Bar of Window  --start */
+.top {
+  background: var(--teriary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* Three on the right side of top bar -- start */
+.menu-icon {
+  width: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+}
+
+.dot:nth-child(1) {
+  background-color: red;
+}
+
+.dot:nth-child(2) {
+  background-color: yellow;
+}
+
+.dot:nth-child(3) {
+  background-color: green;
+}
+
+/* Three on the right side of top bar -- start */
+
+/* Tabs Design in Top Bar of the window --start */
+.tabs {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.tab {
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--secondary-color);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: 1px solid var(--teriary-color);
+}
+
+.tab-title {
+  font-size: 14px;
+  color: white;
+  font-weight: bolder;
+  letter-spacing: 1.2px;
+  margin-right: 15px;
+}
+
+/* Tabs Design in Top Bar of the window --end */
+
+/* Top Bar of Window --end */
+
+/* Download Contents ( Title, Icon, Description, Button) --start */
+
+.download-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.download-content i{
+  font-size: 100px;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.download-content h2{
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.download-content p{
+  font-size: 17px;
+  letter-spacing: 1.3px;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.download-content a{
+  text-decoration: none;
+  background: var(--teriary-color);
+  border: 1px solid var(--border-color);
+  padding: 14px 20px;
+  border-radius: 10px;
+  color: var(--primary-color);
+  font-size: 17px;
+  font-weight: bolder;
+}
+
+.download-content a:hover{
+  background: var(--hover-color);
+  cursor: pointer;
+}
+
+.download-content a i{
+  font-size: 17px;
+  margin: 0;
+  margin-right: 10px;
+}
+
+/* Download Contents --end */

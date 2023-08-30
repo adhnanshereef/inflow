@@ -1,0 +1,108 @@
+/* Section For Body, Parameters, Headers ..... --start */
+.top-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Options in each Section. Eg:- Add Parameters, Add Headers ..... */
+.section-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Text In Options Section */
+.section-options span {
+  font-size: 14px;
+  margin-right: 50px;
+}
+
+/* Section Options Buttons */
+.section-options button {
+  background: var(--teriary-color);
+  border: 1px solid var(--border-color);
+  padding: 7px 9px;
+  border-radius: 10px;
+  color: var(--primary-color);
+  margin-left: 15px;
+}
+
+.section-options button:hover {
+  background: var(--hover-color);
+  cursor: pointer;
+}
+
+/* Select in Section Option */
+.section-options select {
+  background: var(--teriary-color);
+  border: 1px solid var(--border-color);
+  color: var(--primary-color);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* Container For Each Sections Title */
+.section-title-c {
+  padding: 7px;
+}
+
+/* Title for Each Section */
+.section-title {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* A textarea for body */
+.coding-textarea {
+  width: 100%;
+  min-height: 140px;
+  background: var(--secondary-color);
+  border: none;
+  color: var(--primary-color);
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  outline: none;
+  resize: none;
+  background: var(--teriary-color);
+  margin-bottom: 5px;
+  font-family: "Fira Code", monospace;
+}
+
+/* Input Styles in Home4 Stylesheet */
+
+/* If there is no parameters or header .......  */
+.section-none {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+  color: var(--text);
+}
+
+/* To add one */
+.section-none button {
+  background: var(--teriary-color);
+  border: 1px solid var(--border-color);
+  padding: 10px 12.5px;
+  border-radius: 10px;
+  color: var(--primary-color);
+  margin-top: 10px;
+}
+
+.section-none button:hover {
+  background: var(--hover-color);
+  cursor: pointer;
+}
+
+/* Icon if there is nothing */
+.section-none-i {
+  font-size: 50px;
+  margin: 10px 0;
+}
+
+/* Section For Body, Parameters, Headers ..... --end */

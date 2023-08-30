@@ -1,0 +1,77 @@
+/* Inputs in Section, Such as Input to add Parameters, Header .... */
+.section-inputs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+  }
+  
+  /* One Raw Contain two Input */
+  .section-input {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+  }
+  
+  /* Each Input */
+  .section-input input {
+    width: 50%;
+    padding: 10px 12.5px;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+  }
+  
+  .section-input input::placeholder {
+    color: var(--border-color);
+  }
+  
+  .section-input input:focus {
+    background: var(--teriary-color);
+  }
+  
+  .section-input input:nth-child(1) {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  
+  .section-input input:nth-child(2) {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: none;
+  }
+  
+  /* Delete Button For Inputs */
+  .section-input button {
+    background: var(--teriary-color);
+    border: 1px solid var(--border-color);
+    padding: 10px 12.5px;
+    border-radius: 10px;
+    color: var(--primary-color);
+    margin-left: 10px;
+  }
+  
+  .section-input button:hover {
+    background: var(--hover-color);
+    cursor: pointer;
+  }
+  
+  /* Single Input For Authorization ...... */
+  .section-single-input {
+    width: 100%;
+    padding: 10px 12.5px;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  .section-single-input::placeholder {
+    color: var(--border-color);
+  }
+  
+  .section-single-input:focus {
+    background: var(--teriary-color);
+  }
